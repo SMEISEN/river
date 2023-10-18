@@ -68,6 +68,9 @@ cdef class AdaptiveWindowing:
     def get_delta(self):
         return self.delta
 
+    def set_delta(self, delta):
+        self.delta = delta
+
     @property
     def variance_in_window(self):
         return self.variance / self.width
@@ -92,9 +95,6 @@ cdef class AdaptiveWindowing:
 
         """
         return self._update(value)
-
-    cdef void set_delta(self, delta):
-        self.delta = delta
 
     cdef bint _update(self, double value):
         # Increment window with one element
